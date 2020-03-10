@@ -21,6 +21,16 @@
     python --version
     ```
 
+## Downloading
+
+Run the following command to clone the repo and cd into the project root
+directory:
+
+```
+git clone https://github.com/connordelacruz/cta-exercise.git
+cd cta-exercise
+```
+
 ## Environment
 
 Create a new virtual python environment in the project root directory by
