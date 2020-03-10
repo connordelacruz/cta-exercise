@@ -12,10 +12,15 @@ def parse_csv(file_string):
     """
     reader = csv.DictReader(file_string.splitlines(), skipinitialspace=True)
     fields = reader.fieldnames
-    # TODO remove duplicates
+    # Sort items by run number
     data = sorted(
         [row for row in reader],
         key = lambda i: i.get('RUN_NUMBER', '')
     )
-    return fields, data
+    # Remove duplicates
+    unique_data = []
+    for d in data:
+        if d not in unique_data:
+            unique_data.append(d)
+    return fields, unique_data
 
