@@ -1,17 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Upload CSV</h1>
-    <form method="post" action="/" enctype="multipart/form-data">
-      {{ form.hidden_tag() }}
-      {{ form.csv_file() }}<br/>
-      {% for error in form.csv_file.errors %}
-      <div style="color: red;">{{error}}</div>
-      {% endfor %}
-      {{ form.submit() }}
-    </form>
-    {# Render results #}
-    {% if results %}
-    <hr/>
-    {% include "results.html" %}
-    {% endif %}
+<div class="card bg-light">
+    <h2 class="card-header">CSV Upload</h2>
+    <div class="card-body">
+        <form method="post" action="/" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.csv_file.label }}
+                {{ form.csv_file(class_="form-control-file") }}
+            </div>
+            {% for error in form.csv_file.errors %}
+            <div class="alert alert-danger" role="alert">{{error}}</div>
+            {% endfor %}
+            {{ form.submit(class_="btn btn-primary") }}
+        </form>
+    </div>
+</div>
+{# Render results #}
+{% if results %}
+<hr/>
+<div class="card bg-light">
+    <h2 class="card-header">Train Information</h2>
+    <div class="card-body">
+        {% include "results.html" %}
+    </div>
+</div>
+{% endif %}
 {% endblock %}

@@ -1,20 +1,18 @@
-<style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-</style>
-<table>
-  <tr>
-    {% for field in fields %}
-    <th>{{field}}</th>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      {% for field in fields %}
+      <th>{{field}}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in data %}
+    <tr>
+      {% for field in fields %}
+      <td>{{ row[field] }}</td>
+      {% endfor %}
+    </tr>
     {% endfor %}
-  </tr>
-  {% for row in data %}
-  <tr>
-    {% for field in fields %}
-    <td>{{ row[field] }}</td>
-    {% endfor %}
-  </tr>
-  {% endfor %}
+  </tbody>
 </table>
