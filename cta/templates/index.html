@@ -9,4 +9,9 @@
       {% endfor %}
       {{ form.submit() }}
     </form>
+    {# Render results #}
+    {% if results %}
+    <hr/>
+    {% include "results.html" %}
+    {% endif %}
 {% endblock %}

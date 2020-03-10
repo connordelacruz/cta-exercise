@@ -12,9 +12,13 @@ def index():
         file_string = form.csv_file.data.read().decode('utf-8')
         reader = csv.DictReader(file_string.splitlines())
         fields = reader.fieldnames
+        # TODO remove duplicates, sort by RUN_NUMBER
         data = [row for row in reader]
-        # TODO: render template, pass data in context
-        return str(data)
+        return render_template(
+            'index.html', title='Upload File',
+            form=form, results=True, data=data,
+            fields=fields
+        )
     # Render index.html on GET request
-    return render_template('index.html', title='Upload File', form=form)
+    return render_template('index.html', title='Upload File', form=form, results=False)
 
