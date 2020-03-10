@@ -1,0 +1,2 @@
+from cta import app
+
