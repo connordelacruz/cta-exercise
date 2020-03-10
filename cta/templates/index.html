@@ -1,13 +1,9 @@
-<html>
-  <head>
-    <title>{{ title }}</title>
-  </head>
-  <body>
+{% extends "base.html" %}
+{% block content %}
     <h1>Upload CSV</h1>
     <form method="post" action="/" enctype="multipart/form-data">
-      <input type="file" name="file" autocomplete="off" required/>
-      <input type="submit" value="Upload"/>
+      {{ form.hidden_tag() }}
+      {{ form.csv_file() }}<br/>
+      {{ form.submit() }}
     </form>
-  </body>
-</html>
-
+{% endblock %}
