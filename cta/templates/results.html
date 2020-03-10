@@ -10,7 +10,7 @@
     {% for row in data %}
     <tr>
       {% for field in fields %}
-      <td>{{ row[field] }}</td>
+      <td {% if not row[field]|trim() %}class="table-warning"{% endif %}>{{ row[field] }}</td>
       {% endfor %}
     </tr>
     {% endfor %}
